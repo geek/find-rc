@@ -1,5 +1,9 @@
-# find-rc
+# `npm install find-rc`
+
 Find a `rc` file given a name.  Inspiration from [rc](https://github.com/dominictarr/rc).
+
+[![Build Status](https://secure.travis-ci.org/geek/find-rc.svg)](http://travis-ci.org/geek/find-rc)
+
 
 The callback is executed on the first found file.  Here is the order that
 folders will be searched:
