@@ -4,7 +4,9 @@
   "description": "Find a .rc file given a name",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -t 80"
+    "lint": "belly-button",
+    "pretest": "npm run lint",
+    "test": "lab -c"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/geek/find-rc#readme",
   "devDependencies": {
+    "belly-button": "^2.0.1",
     "code": "^3.0.0",
     "lab": "^10.7.1"
   }

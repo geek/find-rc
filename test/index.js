@@ -4,10 +4,11 @@ const Code = require('code');
 const Lab = require('lab');
 const FindRc = require('../');
 
+
 const lab = exports.lab = Lab.script();
-const describe = lab.describe;
 const it = lab.it;
 const expect = Code.expect;
+
 
 it('finds an rc in the current working directory', (done) => {
   FindRc('find', (err, filePath) => {
