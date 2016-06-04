@@ -3,6 +3,7 @@ Find a `rc` file given a name.  Inspiration from [rc](https://github.com/dominic
 
 The callback is executed on the first found file.  Here is the order that
 folders will be searched:
+
 1. Current directory
 2. Parent of current directory, until the root folder is encountered
 3. $HOME/.${apprc}
