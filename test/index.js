@@ -11,39 +11,31 @@ const expect = Code.expect;
 
 
 it('finds an rc in the current working directory', (done) => {
-  FindRc('find', (err, filePath) => {
-    expect(err).to.not.exist();
-    expect(filePath).to.exist();
-    expect(filePath).to.contain('.findrc');
-    done();
-  });
+  const filePath = FindRc('find');
+  expect(filePath).to.exist();
+  expect(filePath).to.contain('.findrc');
+  done();
 });
 
 
 it('finds a file in a parent directory', (done) => {
-  FindRc('find', __dirname, (err, filePath) => {
-    expect(err).to.not.exist();
-    expect(filePath).to.exist();
-    expect(filePath).to.contain('.findrc');
-    done();
-  });
+  const filePath = FindRc('find', __dirname);
+  expect(filePath).to.exist();
+  expect(filePath).to.contain('.findrc');
+  done();
 });
 
 
-it('reports an error when a file isn\'t found', (done) => {
-  FindRc('no_way_will_this_exist', (err, filePath) => {
-    expect(err).to.exist();
-    expect(filePath).to.not.exist();
-    done();
-  });
+it('returns undefined when a file isn\'t found', (done) => {
+  const filePath = FindRc('no_way_will_this_exist');
+  expect(filePath).to.not.exist();
+  done();
 });
 
-it('reports an error when a file isn\'t found and env.USERPROFILE is set', (done) => {
+it('returns undefined when a file isn\'t found and env.USERPROFILE is set', (done) => {
   process.env.USERPROFILE = process.env.HOME;
   delete process.env.HOME;
-  FindRc('no_way_will_this_exist', (err, filePath) => {
-    expect(err).to.exist();
-    expect(filePath).to.not.exist();
-    done();
-  });
+  const filePath = FindRc('no_way_will_this_exist');
+  expect(filePath).to.not.exist();
+  done();
 });

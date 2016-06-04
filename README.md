@@ -5,8 +5,7 @@ Find a `rc` file given a name.  Inspiration from [rc](https://github.com/dominic
 [![Build Status](https://secure.travis-ci.org/geek/find-rc.svg)](http://travis-ci.org/geek/find-rc)
 
 
-The callback is executed on the first found file.  Here is the order that
-folders will be searched:
+Here is the order that folders will be searched:
 
 1. Current directory
 2. Parent of current directory, until the root folder is encountered
@@ -18,20 +17,19 @@ folders will be searched:
 8. /etc/${app}.rc
 
 
-### `(appname, [startDir], callback)`
+### `(appname, [startDir])`
 
 - `appname` - name of file you are looking for.  Example: `lab`.  It will be formatted with `.{appname}rc`
 - `startDir` - (optional) directory to start looking for the file.  Defaults to `process.cwd`
-- `callback` - callback function to receive result.  Signature is `(err, filePath)`
 
 Example
 
 ```js
 const FindRc = require('find-rc');
 
-FindRc('lab', (err, filePath) => {
-  if (filePath) {
-    // load file and parse configuration
-  }
-});
+const filePath = FindRc('lab');
+if (filePath) {
+  // load file and parse configuration
+  const rc = require(filePath);
+}
 ```
