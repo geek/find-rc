@@ -13,7 +13,7 @@ const expect = Code.expect;
 it('finds an rc in the current working directory', (done) => {
   const filePath = FindRc('find');
   expect(filePath).to.exist();
-  expect(filePath).to.contain('.findrc');
+  expect(filePath).to.contain('.findrc.js');
   done();
 });
 
@@ -21,7 +21,7 @@ it('finds an rc in the current working directory', (done) => {
 it('finds a file in a parent directory', (done) => {
   const filePath = FindRc('find', __dirname);
   expect(filePath).to.exist();
-  expect(filePath).to.contain('.findrc');
+  expect(filePath).to.contain('.findrc.js');
   done();
 });
 
