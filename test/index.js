@@ -1,7 +1,7 @@
 'use strict';
 
-const Code = require('code');
-const Lab = require('lab');
+const Code = require('@hapi/code');
+const Lab = require('@hapi/lab');
 const FindRc = require('../');
 
 
@@ -31,6 +31,13 @@ it('returns undefined when a file isn\'t found', () => {
 
 it('returns undefined when a file isn\'t found and env.USERPROFILE is set', () => {
   process.env.USERPROFILE = process.env.HOME;
+  delete process.env.HOME;
+  const filePath = FindRc('no_way_will_this_exist');
+  expect(filePath).to.not.exist();
+});
+
+it('operates when env.USERPROFILE and env.HOME are missing', () => {
+  delete process.env.USERPROFILE;
   delete process.env.HOME;
   const filePath = FindRc('no_way_will_this_exist');
   expect(filePath).to.not.exist();
