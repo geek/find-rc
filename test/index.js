@@ -2,6 +2,7 @@
 
 const Code = require('@hapi/code');
 const Lab = require('@hapi/lab');
+const Path = require('path');
 const FindRc = require('../');
 
 
@@ -21,6 +22,20 @@ it('finds a file in a parent directory', () => {
   const filePath = FindRc('find', __dirname);
   expect(filePath).to.exist();
   expect(filePath).to.contain('.findrc.js');
+});
+
+
+it('finds a cjs file', () => {
+  const filePath = FindRc('find', Path.join(__dirname, 'fixtures', 'cjs'));
+  expect(filePath).to.exist();
+  expect(filePath).to.contain('.findrc.cjs');
+});
+
+
+it('finds an mjs file', () => {
+  const filePath = FindRc('find', Path.join(__dirname, 'fixtures', 'mjs'));
+  expect(filePath).to.exist();
+  expect(filePath).to.contain('.findrc.mjs');
 });
 
 
