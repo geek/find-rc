@@ -1,6 +1,6 @@
 {
   "name": "find-rc",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Find a .rc file given a name",
   "main": "lib/index.js",
   "scripts": {
